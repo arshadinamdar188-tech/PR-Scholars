@@ -1,0 +1,7 @@
+project_id = "ujmgtefbhzlftavujqyy"
+
+[functions.razorpay]
+verify_jwt = false
+
+[functions.padma-zoom-recordings]
+verify_jwt = false

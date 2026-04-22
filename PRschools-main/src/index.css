@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PW.live inspired clean colors */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Navy Blue Primary - #1B2A4E */
+    --primary: 222 47% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Royal Blue Accent - #3A6FF8 */
+    --accent: 220 93% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Light Gray Secondary - #F7F7F7 */
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 93% 60%;
+
+    --radius: 0.75rem;
+
+    /* PRScholars Brand Colors */
+    --navy: 222 47% 20%;
+    --navy-light: 222 35% 30%;
+    --navy-dark: 222 47% 15%;
+    --royal-blue: 220 93% 60%;
+    --royal-blue-light: 220 93% 70%;
+    --light-gray: 0 0% 97%;
+    
+    /* Legacy colors for Padma/RAcademy */
+    --gold: 45 93% 47%;
+    --gold-light: 45 90% 60%;
+    --gold-dark: 40 85% 35%;
+    --olive: 75 30% 35%;
+    --olive-light: 75 25% 45%;
+
+    /* Padma Maths Pro - Blue Theme */
+    --padma-primary: 220 93% 60%;
+    --padma-secondary: 220 70% 50%;
+    --padma-accent: 180 65% 50%;
+    --padma-bg: 0 0% 100%;
+
+    /* R's Academy - Olive & Gold Theme */
+    --racademy-primary: 75 30% 35%;
+    --racademy-secondary: 45 93% 47%;
+    --racademy-accent: 30 100% 50%;
+    --racademy-bg: 0 0% 100%;
+
+    /* Enhanced Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-blue: 0 10px 40px hsl(220 93% 60% / 0.25);
+    --shadow-navy: 0 10px 40px hsl(222 47% 20% / 0.2);
+    --shadow-glow: 0 0 30px hsl(220 93% 60% / 0.3);
+    --shadow-olive: 0 10px 40px hsl(75 30% 35% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 220 93% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 220 93% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 220 93% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 220 93% 60%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 220 93% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  /* Glass Morphism Cards */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-black/20 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-navy to-royal-blue;
+  }
+
+  .gradient-text-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-light;
+  }
+
+  /* Modern Card Styles */
+  .card-modern {
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/50;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:shadow-2xl hover:-translate-y-2 hover:border-border;
+  }
+
+  .card-modern::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, hsl(var(--accent) / 0.05), transparent 60%);
+  }
+
+  .card-modern:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Gradient Border Effect */
+  .gradient-border {
+    @apply relative rounded-2xl;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute -inset-[1px] rounded-2xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, hsl(var(--royal-blue)), hsl(var(--accent)), hsl(var(--royal-blue-light)));
+    z-index: -1;
+  }
+
+  .gradient-border:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Icon Container Styles */
+  .icon-container {
+    @apply relative w-14 h-14 rounded-2xl flex items-center justify-center;
+    @apply transition-all duration-300;
+  }
+
+  .icon-container-blue {
+    @apply bg-gradient-to-br from-royal-blue/20 to-royal-blue/5;
+    @apply group-hover:from-royal-blue/30 group-hover:to-royal-blue/10 group-hover:scale-110;
+  }
+
+  .icon-container-olive {
+    @apply bg-gradient-to-br from-olive/20 to-olive/5;
+    @apply group-hover:from-olive/30 group-hover:to-olive/10 group-hover:scale-110;
+  }
+
+  /* Section Styling */
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .container-padding {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    @apply group relative p-8 rounded-2xl bg-card border border-border/50;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:shadow-xl hover:-translate-y-1 hover:border-accent/20;
+  }
+
+  .feature-card::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 rounded-full;
+    @apply bg-gradient-to-r from-royal-blue to-accent;
+    @apply transition-all duration-300;
+  }
+
+  .feature-card:hover::after {
+    @apply w-1/2;
+  }
+
+  /* Stats Card */
+  .stat-card {
+    @apply relative p-6 text-center rounded-2xl overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0;
+    @apply transition-opacity duration-300;
+  }
+
+  .stat-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Hero Badge */
+  .hero-badge {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full;
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+    @apply text-white text-sm font-medium;
+  }
+
+  /* Glow Button */
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    box-shadow: 0 0 30px currentColor;
+  }
+
+  .btn-glow:hover::before {
+    @apply opacity-50;
+  }
+
+  /* Image Overlay */
+  .image-overlay {
+    @apply relative overflow-hidden rounded-2xl;
+  }
+
+  .image-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent;
+    @apply opacity-0 transition-opacity duration-300;
+  }
+
+  .image-overlay:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Floating Elements */
+  .float-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-element-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  /* Blob Backgrounds */
+  .blob-bg {
+    @apply absolute rounded-full blur-3xl opacity-30;
+    animation: blob 8s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgb(0 0 0 / 0.3);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Stagger Animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+  75% { transform: translateY(-15px) rotate(-1deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20px, -30px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.9); }
+  75% { transform: translate(30px, 10px) scale(1.05); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-blob {
+  animation: blob 8s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-navy/30 rounded-full transition-colors;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-navy/50;
+}
+
+/* Selection styling */
+::selection {
+  @apply bg-royal-blue/20 text-navy;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
