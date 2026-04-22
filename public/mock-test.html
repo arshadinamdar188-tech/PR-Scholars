@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PR Classes Mock Test</title>
+  <meta name="description" content="PR Classes Mock Test helps students practice timed tests, track progress, and review results instantly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/mock-test.css">
+</head>
+<body>
+  <div class="mock-app-shell">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark">PR</div>
+        <div>
+          <p class="eyebrow">Smart Practice Portal</p>
+          <h1>PR Classes Mock Test</h1>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="backButton" class="ghost-button" type="button">Back</button>
+        <a id="homeLink" class="ghost-button" href="/">Home</a>
+        <button id="openAdminButton" class="ghost-button accent-outline" type="button">Admin</button>
+        <button id="logoutButton" class="solid-button danger-button hidden" type="button">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section id="landingScreen" class="screen active">
+        <div class="hero-card glass-card">
+          <div class="hero-copy">
+            <span class="hero-badge">Practice. Perform. Progress.</span>
+            <h2>PR Classes Mock Test</h2>
+            <p class="hero-subtitle">Test your knowledge. Track your progress. Get instant explanations after every attempt.</p>
+            <div class="hero-actions">
+              <button id="takeSampleButton" class="solid-button primary-button" type="button">Take Sample Test</button>
+              <button id="openAuthButton" class="solid-button accent-button" type="button">Login / Register</button>
+              <button id="landingAdminButton" class="ghost-button accent-outline" type="button">Admin Question Editor</button>
+            </div>
+          </div>
+
+          <div class="benefits-card">
+            <h3>Why students use it</h3>
+            <ul class="benefits-list">
+              <li>Timed tests with real exam pressure</li>
+              <li>Instant results and explanations</li>
+              <li>Progress tracking for registered students</li>
+              <li>Full subject coverage across key school topics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="authScreen" class="screen">
+        <div class="content-card auth-card glass-card">
+          <div class="section-heading">
+            <span class="section-kicker">Access Full Library</span>
+            <h2>Login or Create Your Student Account</h2>
+            <p>Register once to save test history, unlock the complete subject library, and continue where you left off.</p>
+          </div>
+
+          <div class="auth-toggle">
+            <button id="showLoginButton" class="toggle-button active" type="button">Login</button>
+            <button id="showRegisterButton" class="toggle-button" type="button">Register</button>
+          </div>
+
+          <div id="authMessage" class="inline-message hidden"></div>
+
+          <div id="loginPanel" class="auth-panel active">
+            <form id="loginForm" class="form-grid">
+              <label class="field-group">
+                <span>Email</span>
+                <input id="loginEmail" type="email" placeholder="Enter your email" required>
+              </label>
+              <label class="field-group">
+                <span>Password</span>
+                <input id="loginPassword" type="password" placeholder="Enter password" required>
+              </label>
+              <button class="solid-button primary-button wide-button" type="submit">Login</button>
+            </form>
+          </div>
+
+          <div id="registerPanel" class="auth-panel">
+            <form id="registerForm" class="form-grid two-column-grid">
+              <label class="field-group">
+                <span>Full Name</span>
+                <input id="registerName" type="text" placeholder="Student full name" required>
+              </label>
+              <label class="field-group">
+                <span>Email</span>
+                <input id="registerEmail" type="email" placeholder="student@example.com" required>
+              </label>
+              <label class="field-group">
+                <span>Mobile Number</span>
+                <input id="registerMobile" type="tel" placeholder="10 digit mobile number" required>
+              </label>
+              <label class="field-group">
+                <span>Class</span>
+                <select id="registerClass" required>
+                  <option value="">Select class</option>
+                  <option value="1">Class 1</option>
+                  <option value="2">Class 2</option>
+                  <option value="3">Class 3</option>
+                  <option value="4">Class 4</option>
+                  <option value="5">Class 5</option>
+                  <option value="6">Class 6</option>
+                  <option value="7">Class 7</option>
+                  <option value="8">Class 8</option>
+                  <option value="9">Class 9</option>
+                  <option value="10">Class 10</option>
+                </select>
+              </label>
+              <label class="field-group two-column-span">
+                <span>Password</span>
+                <input id="registerPassword" type="password" placeholder="Create a password" required>
+              </label>
+              <button class="solid-button accent-button wide-button two-column-span" type="submit">Register &amp; Start Full Test</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboardScreen" class="screen">
+        <div class="content-card glass-card">
+          <div class="dashboard-header">
+            <div>
+              <span class="section-kicker">Full Test Library</span>
+              <h2 id="welcomeTitle">Hello, Student!</h2>
+              <p>Choose a subject, start a timed test, and track your performance over time.</p>
+            </div>
+            <div class="hero-actions">
+              <button id="viewResultsButton" class="ghost-button accent-outline" type="button">My Results</button>
+              <button id="dashboardLogoutButton" class="ghost-button danger-outline" type="button">Logout</button>
+            </div>
+          </div>
+
+          <div id="subjectGrid" class="subject-grid"></div>
+        </div>
+      </section>
+
+      <section id="testScreen" class="screen">
+        <div class="test-layout">
+          <div class="content-card glass-card test-main-card">
+            <div class="test-header-row">
+              <div>
+                <span id="testModeBadge" class="section-kicker">Sample Test</span>
+                <h2 id="testTitle">General Knowledge Test</h2>
+                <p id="testMeta">Question 1</p>
+              </div>
+              <div id="timerBadge" class="timer-badge">05:00</div>
+            </div>
+
+            <div class="progress-strip">
+              <div>
+                <strong id="progressText">Question 1 of 5</strong>
+              </div>
+              <div class="progress-track">
+                <div id="progressFill" class="progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <p id="questionText" class="question-text"></p>
+              <div id="optionsContainer" class="options-list"></div>
+            </div>
+
+            <div class="test-actions">
+              <button id="prevQuestionButton" class="ghost-button" type="button">Previous</button>
+              <button id="markReviewButton" class="ghost-button accent-outline" type="button">Mark for Review</button>
+              <button id="nextQuestionButton" class="solid-button primary-button" type="button">Next</button>
+              <button id="submitTestButton" class="solid-button accent-button" type="button">Submit Test</button>
+            </div>
+          </div>
+
+          <aside class="content-card glass-card nav-panel-card">
+            <div class="nav-panel-header">
+              <h3>Question Navigation</h3>
+              <p>Answered, skipped, unanswered, and review-marked questions update live.</p>
+            </div>
+            <div id="questionPalette" class="question-palette"></div>
+            <div class="legend-grid">
+              <span><i class="legend-chip answered"></i>Answered</span>
+              <span><i class="legend-chip skipped"></i>Skipped</span>
+              <span><i class="legend-chip review"></i>Review</span>
+              <span><i class="legend-chip unanswered"></i>Unanswered</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="resultsScreen" class="screen">
+        <div class="content-card glass-card results-card">
+          <div class="section-heading compact-heading">
+            <span class="section-kicker">Test Completed</span>
+            <h2 id="resultsTitle">Your Result</h2>
+            <p id="resultSummaryText">Instant performance summary</p>
+          </div>
+
+          <div class="result-hero">
+            <div class="score-ring">
+              <span id="animatedScore">0</span>
+              <small id="scoreTotalLabel">/20</small>
+            </div>
+            <div class="result-metrics">
+              <div class="metric-card">
+                <span>Percentage</span>
+                <strong id="percentageValue">0%</strong>
+              </div>
+              <div class="metric-card">
+                <span>Grade</span>
+                <strong id="gradeValue">A+</strong>
+              </div>
+              <div class="metric-card">
+                <span>Performance</span>
+                <strong id="performanceLabel">Excellent</strong>
+              </div>
+            </div>
+          </div>
+
+          <div id="analyticsGrid" class="analytics-grid"></div>
+
+          <div id="guestPrompt" class="cta-banner hidden"></div>
+          <div id="reviewContainer" class="review-list"></div>
+
+          <div class="results-actions">
+            <button id="retakeButton" class="solid-button primary-button" type="button">Retake Test</button>
+            <button id="backToDashboardButton" class="ghost-button accent-outline" type="button">Back to Dashboard</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="historyScreen" class="screen">
+        <div class="content-card glass-card">
+          <div class="dashboard-header">
+            <div>
+              <span class="section-kicker">Saved Results</span>
+              <h2>My Results</h2>
+              <p>Review previous attempts, compare subjects, and clear history whenever needed.</p>
+            </div>
+            <div class="hero-actions">
+              <button id="exportResultsButton" class="ghost-button accent-outline" type="button">Export CSV</button>
+              <button id="clearResultsButton" class="ghost-button danger-outline" type="button">Clear History</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Score</th>
+                  <th>Percentage</th>
+                  <th>Grade</th>
+                  <th>Date Taken</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="dashboard-header" style="margin-top: 1rem;">
+            <div>
+              <span class="section-kicker">Parent-Teacher Analytics</span>
+              <h2>Subject Performance Summary</h2>
+              <p>Average marks and trends by subject from saved attempts.</p>
+            </div>
+            <button id="exportAnalyticsButton" class="ghost-button accent-outline" type="button">Export Analytics CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Attempts</th>
+                  <th>Average %</th>
+                  <th>Best %</th>
+                  <th>Latest Grade</th>
+                </tr>
+              </thead>
+              <tbody id="analyticsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="adminScreen" class="screen">
+        <div class="content-card glass-card">
+          <div class="dashboard-header">
+            <div>
+              <span class="section-kicker">Admin Panel</span>
+              <h2>Question Editor &amp; Excel Import</h2>
+              <p>Manage question bank in localStorage. Upload Excel and instantly update tests.</p>
+            </div>
+          </div>
+
+          <div id="adminMessage" class="inline-message hidden"></div>
+
+          <div id="adminLoginPanel">
+            <form id="adminLoginForm" class="form-grid" style="max-width: 460px;">
+              <label class="field-group">
+                <span>Admin Email</span>
+                <input id="adminEmail" type="email" placeholder="admin@prclasses.in" required>
+              </label>
+              <label class="field-group">
+                <span>Password</span>
+                <input id="adminPassword" type="password" placeholder="Enter admin password" required>
+              </label>
+              <button class="solid-button primary-button wide-button" type="submit">Login to Admin</button>
+            </form>
+          </div>
+
+          <div id="adminWorkspace" class="hidden">
+            <div class="auth-toggle">
+              <button id="adminTabAdd" class="toggle-button active" type="button">Add Question</button>
+              <button id="adminTabImport" class="toggle-button" type="button">Upload Excel</button>
+              <button id="adminTabList" class="toggle-button" type="button">Question Bank</button>
+            </div>
+
+            <div id="adminAddPanel" class="admin-panel active">
+              <form id="addQuestionForm" class="form-grid two-column-grid">
+                <label class="field-group">
+                  <span>Subject</span>
+                  <select id="questionSubject" required>
+                    <option value="">Select subject</option>
+                  </select>
+                </label>
+                <label class="field-group">
+                  <span>Correct Option Index (0-3)</span>
+                  <input id="questionCorrectIndex" type="number" min="0" max="3" required>
+                </label>
+                <label class="field-group two-column-span">
+                  <span>Question</span>
+                  <input id="questionTextInput" type="text" placeholder="Enter question text" required>
+                </label>
+                <label class="field-group">
+                  <span>Option 1</span>
+                  <input id="questionOption1" type="text" required>
+                </label>
+                <label class="field-group">
+                  <span>Option 2</span>
+                  <input id="questionOption2" type="text" required>
+                </label>
+                <label class="field-group">
+                  <span>Option 3</span>
+                  <input id="questionOption3" type="text" required>
+                </label>
+                <label class="field-group">
+                  <span>Option 4</span>
+                  <input id="questionOption4" type="text" required>
+                </label>
+                <label class="field-group two-column-span">
+                  <span>Explanation</span>
+                  <input id="questionExplanation" type="text" placeholder="Short explanation" required>
+                </label>
+                <button class="solid-button accent-button wide-button two-column-span" type="submit">Add Question</button>
+              </form>
+            </div>
+
+            <div id="adminImportPanel" class="admin-panel hidden">
+              <div class="cta-banner">
+                <strong>Excel format:</strong> Use columns: <em>subject, question, option1, option2, option3, option4, correctAnswer, explanation</em>.
+                <br>
+                correctAnswer can be 0-3 or option text.
+              </div>
+              <div class="hero-actions">
+                <label class="field-group" style="min-width: 280px;">
+                  <span>Choose Subject for Import</span>
+                  <select id="importSubjectSelect">
+                    <option value="from-file">Use subject from Excel file</option>
+                  </select>
+                </label>
+                <label class="field-group" style="min-width: 280px;">
+                  <span>Or Create Subject</span>
+                  <input id="newSubjectName" type="text" placeholder="Type new subject name">
+                </label>
+                <button id="createSubjectButton" class="ghost-button accent-outline" type="button">Create Subject</button>
+                <input id="excelFileInput" type="file" accept=".xlsx,.xls,.csv">
+                <button id="importExcelButton" class="solid-button primary-button" type="button">Import Questions</button>
+                <button id="downloadTemplateButton" class="ghost-button accent-outline" type="button">Download Template CSV</button>
+              </div>
+            </div>
+
+            <div id="adminListPanel" class="admin-panel hidden">
+              <div class="hero-actions">
+                <label class="field-group" style="min-width: 280px;">
+                  <span>Filter by Subject</span>
+                  <select id="adminSubjectFilter">
+                    <option value="all">All Subjects</option>
+                  </select>
+                </label>
+                <button id="resetQuestionBankButton" class="ghost-button danger-outline" type="button">Reset to Default</button>
+              </div>
+              <div class="table-wrap">
+                <table class="results-table">
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Question</th>
+                      <th>Correct</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminQuestionTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="/mock-test.runtime-config.js"></script>
+  <script src="/mock-test.js"></script>
+</body>
+</html>
